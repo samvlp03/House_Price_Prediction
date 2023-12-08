@@ -6,7 +6,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 
-# Load the dataset (replace 'your_dataset.csv' with your actual dataset file)
 dataset = pd.read_csv('data.csv')
 
 # Assuming 'price' is the target variable
@@ -20,6 +19,7 @@ X = dataset.drop(['price', 'date'] + list(non_numeric_columns), axis=1)
 
 # Convert 'date' to numerical representation (assuming it's a datetime column)
 X['date'] = pd.to_datetime(dataset['date']).astype('int64') // 10**9  # Convert datetime to Unix timestamp
+
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
